@@ -15,6 +15,13 @@
  */
 
 
+html, body {
+  background-color: aqua;
+  margin: 0 auto;
+  height: 100%;
+  max-width: 750px
+}
+
 .header-text p{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 40px;
@@ -24,6 +31,15 @@
   display: flex;
   justify-content: flex-end;
   flex-direction: row
+}
+
+.user_form > input[type=text] {
+  /* padding-left: 25px; */
+  /* margin-left: 50px; */
+}
+
+.user_form > label {
+  padding-right: 25px
 }
 
 .username {

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  user_name       :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  email           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
 
   validates :user_name, :session_token, presence: true, uniqueness: true
@@ -12,8 +25,8 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64(16)
   end
 
-  def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
+  def self.find_by_credentials(user_name, password)
+    user = User.find_by(user_name: user_name)
     user.nil? ? nil : user
   end
 

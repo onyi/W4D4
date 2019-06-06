@@ -3,29 +3,28 @@
     <% action_url = users_url %>
   <% elsif action == :signin %>
     <% submit_button_text = "Login"%>
-    <% action_url = new_session_url %>
+    <% action_url = session_url %>
   <% end %>
 
 <h1><%= submit_button_text%></h1>
 
-<form action="<%=action_url%>" method="POST" >
+<form class="user_form" action="<%=action_url%>" method="POST" >
   <%= auth_token %>
 
-  <label>Username:
-    <input type="text" name="users[user_name]" value="<%= user.user_name%>">
-  </label>
+  <label>Username:</label>
+  <input type="text" name="users[user_name]" value="<%= user.user_name%>">
+
   <br>
 
   <%if action == :create %>
-  <label>Email:
-    <input type="text" name="users[email]" value="<%= user.email %>">
-  </label>
+  <label>Email:</label>
+  <input type="text" name="users[email]" value="<%= user.email %>">
+ 
   <br>
   <% end %>
 
-  <label>Password:
-    <input type="password" name="users[password]" value="<%= user.password%>">
-  </label>
+  <label>Password:</label>
+  <input type="password" name="users[password]" value="<%= user.password%>">
   <br>
 
   <input type="submit" value="<%=submit_button_text%>">

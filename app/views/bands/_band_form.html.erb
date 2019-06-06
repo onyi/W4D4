@@ -1,0 +1,19 @@
+<% if action == :new %>
+<% page_name = "Add New Band" %>
+<% button_text = "Create" %>
+<% elsif action == :edit %>
+<% page_name = "Edit Current Band" %>
+<% button_text = "Update" %>
+<% end %>
+
+
+<h1><%=page_name%></h1>
+
+<form action="<%= bands_url %>" method="POST">
+  <label>Band Name:
+    <input type="text" name="bands[name]" value="<%= band.name%>" >
+  </label>
+
+  <input type="submit" value="<%=button_text%>">
+
+</form>

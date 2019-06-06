@@ -13,14 +13,17 @@
 
     <header>
       <div class="header_text">
-        <p>Music App<p>
+        <a href="<%= bands_url%>">
+          <p>Music App<p>
+        </a>
       </div>
       <div class="user_profile">
 
-
         <% if logged_in? %>
           <div class="username">
-            <%= current_user.user_name %>
+            <a href="<%= user_url(current_user) %>">
+              <%= current_user.user_name %>
+            </a>
           </div>
           
           <form action="<%= session_url %>" method="POST">
@@ -35,15 +38,17 @@
       </div>
     </header>
 
+
+    <%= yield %>
+
     <% if flash[:errors] %>
+    <h2>Error:</h2>
     <ul>
       <% flash[:errors].each do |error| %>
       <li class="error_msgs"><%= error %></li>
     </ul>
       <% end %>
     <% end %>
-
-    <%= yield %>
     <footer>
       <%= yield :footer%>
       <div class="footer_text">

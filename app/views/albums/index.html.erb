@@ -1,0 +1,8 @@
+
+<a href="<%= new_album_url %>">Add New Album</a>
+
+<h1>Album List</h1>
+
+<% @albums.each do |album| %>
+  <%= render album %>
+<% end %>

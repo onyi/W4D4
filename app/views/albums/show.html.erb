@@ -1,0 +1,16 @@
+<h1> Album Name: <%= @album.title %> </h1>
+<h3> Album Year: <%= @album.year %> </h3>
+
+<form action="<%= new_track_url %>" method="GET">
+  <input type="hidden" name="album_id" value="<%= @album.id %>" >
+  <input class="add_track" type="submit" value="Add Track">
+</form>
+
+<form action="<%= album_url %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input class="delete_album" type="submit" value="Delete Album">
+</form>
+
+
+<% content_for :footer %>
+

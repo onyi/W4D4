@@ -1,0 +1,13 @@
+<h1>Create New Album Record</h1>
+
+<form action="<%= albums_url %>" method="POST">
+  <input type="hidden" name="albums[band_id]" value="<%= @album.band_id %>">
+  <label>Album Title: </label>
+  <input type="text" name="albums[title]" value="<%= @album.title %>">
+  <br>
+  <label>Album Year: </label>
+  <input type="text" name="albums[year]" value="<%= @album.year %>">
+  <br>
+  <input type="submit" value="Create">
+</form>
+

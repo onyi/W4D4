@@ -1,27 +1,30 @@
 class SessionsController < ApplicationController
 
-  # before_action :require_no_user!
+  before_action :require_no_user!
 
   def new
+    # debugger
     @user = User.new
     render :new
   end
 
   def create
+    debugger
     user = User.find_by_credentials(
-      params[:users][:email],
+      params[:users][:user_name],
       params[:users][:password]
     )
     if user.nil?
-      flash.now[:errors] = ["User does not exists!"]
-      redirect_to session_new_url
+      flash[:errors] = ["User does not exists!"]
+      redirect_to new_session_url
     # Redirect to main 
     else
       if user.is_password?(params[:users][:password])
-        redirect_to user_url(user)
+        log_in_user!(user)
+        redirect_to bands_url
       else
-        flash.now[:errors] = ["Password is incorrect!"]
-        redirect_to session_new_url
+        flash[:errors] = ["Password is incorrect!"]
+        redirect_to new_session_url
       end
     end
   end

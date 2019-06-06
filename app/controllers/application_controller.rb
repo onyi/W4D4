@@ -1,12 +1,9 @@
 class ApplicationController < ActionController::Base
   # Globally available method for a controller
 
-  helper_method :current_user, :logged_in?, :auth_token
-
-  private
-  def require_no_user!
-    redirect_to albums_url if current_user
-  end
+  helper_method :current_user
+  helper_method :logged_in?
+  helper_method :auth_token
 
   def current_user
     return nil unless session[:session_token]
@@ -34,6 +31,11 @@ class ApplicationController < ActionController::Base
     html += " name=\"authenticity_token\" "
     html += " value=\"<%= #{form_authenticity_token} %>\" >"
     html.html_safe
+  end
+
+  private
+  def require_no_user!
+    redirect_to albums_url if current_user
   end
 
 end
