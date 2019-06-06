@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="header_text">
+        Music App
+      </div>
+      <div class="user_opt">
+        <% if logged_in? %>
+          <%= current_user.user_name %>
+          <form action="<%= session_url %>" method="POST">
+            <%= auth_token %>
+            <input type="hidden" name="_method" value="DELETE" >
+            <input type="submit" value="Logout">
+          </form>
+        <% else %>
+          <a href="<%= new_session_url %>" >Login</a>
+          <a href="<%= new_user_url %>" >Sign up</a>
+        <% end %>
+      </div>
+    </header>
+
+
+    <%= yield %>
+    <footer>
+      <div class="footer_text">
+        <p>Copy right by App Academy, the coolest bootcamp ever</p>
+      </div>
+      <%= yield :footer%>
+    </footer>
+  </body>
+</html>
