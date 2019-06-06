@@ -1,0 +1,33 @@
+  <% if action == :create %>
+    <% submit_button_text = "Sign up"%>
+    <% action_url = users_url %>
+  <% elsif action == :signin %>
+    <% submit_button_text = "Login"%>
+    <% action_url = new_session_url %>
+  <% end %>
+
+<h1><%= submit_button_text%></h1>
+
+<form action="<%=action_url%>" method="POST" >
+  <%= auth_token %>
+
+  <label>Username:
+    <input type="text" name="users[user_name]" value="<%= user.user_name%>">
+  </label>
+  <br>
+
+  <%if action == :create %>
+  <label>Email:
+    <input type="text" name="users[email]" value="<%= user.email %>">
+  </label>
+  <br>
+  <% end %>
+
+  <label>Password:
+    <input type="password" name="users[password]" value="<%= user.password%>">
+  </label>
+  <br>
+
+  <input type="submit" value="<%=submit_button_text%>">
+
+</form>

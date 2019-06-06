@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   validates :user_name, :session_token, presence: true, uniqueness: true
   validates :email, uniqueness: true
-  validates :password, length: { minimum: 8, allow_nil: true, message: { "Password must be 8 characters long" } }
+  validates :password, length: { minimum: 8, allow_nil: true }
 
   attr_reader :password
 
@@ -14,14 +14,7 @@ class User < ApplicationRecord
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
-    if user
-      user
-      redirect_to home_url #TODO, need url prefix name here
-    else
-      #User does not exists, throw error, also creates new User instance
-      user = User.new(params)
-      flash.now[:errors] = ["Invalid credentials!"]
-    end
+    user.nil? ? nil : user
   end
 
   def reset_session_token!
