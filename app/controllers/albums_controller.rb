@@ -44,7 +44,6 @@ class AlbumsController < ApplicationController
       flash.now[:error] = ["Album does not exists!!!"]
       render :index
     end
-    redirect_to album_url(@album)
   end
 
   def destroy

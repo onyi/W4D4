@@ -1,5 +1,9 @@
+
+<a class="nav_ele" href="<%= bands_url %>">Back to Bands List</a>
+
+
 <h1> Band Name: <%= @band.name %> </h1>
-<form action="<%= new_album_url %>" method="GET">
+<form action="<%= new_band_album_url(@band) %>" method="GET">
   <input type="hidden" name="band_id" value="<%= @band.id %>" >
   <input class="add_album" type="submit" value="Add Album">
 </form>

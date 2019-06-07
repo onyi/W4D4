@@ -1,7 +1,17 @@
-<h1> Album Name: <%= @album.title %> </h1>
-<h3> Album Year: <%= @album.year %> </h3>
+<a class="nav_ele" href="<%= bands_url %>">Back to Bands List</a>
+<a class="nav_ele" href="<%= band_url(@album.band) %>">Back to Bands Detail</a>
 
-<form action="<%= new_track_url %>" method="GET">
+<h1> Band: <%= @album.band.name %> </h1>
+<h2> Album Name: <%= @album.title %> </h2>
+<h2> Album Year: <%= @album.year %> </h2>
+<h2> Album Type: <%= @album.album_type ? "Live" : "Studio"%>
+
+<form action="<%= edit_album_url(@album) %>" method="GET">
+  <input type="hidden" name="album_id" value="<%= @album.id %>" >
+  <input class="edit_album" type="submit" value="Edit Album">
+</form>
+
+<form action="<%= new_album_track_url(@album) %>" method="GET">
   <input type="hidden" name="album_id" value="<%= @album.id %>" >
   <input class="add_track" type="submit" value="Add Track">
 </form>
@@ -10,6 +20,7 @@
   <input type="hidden" name="_method" value="DELETE">
   <input class="delete_album" type="submit" value="Delete Album">
 </form>
+
 
 
 <% content_for :footer %>

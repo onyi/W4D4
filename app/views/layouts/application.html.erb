@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="site">
 
     <header>
       <div class="header_text">
@@ -38,8 +38,9 @@
       </div>
     </header>
 
-
-    <%= yield %>
+    <main class="site_content">
+      <%= yield %>
+    </main>
 
     <% if flash[:errors] %>
     <h2>Error:</h2>

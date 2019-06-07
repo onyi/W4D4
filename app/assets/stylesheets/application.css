@@ -27,7 +27,11 @@ html, body {
   font-size: 40px;
 }
 
-.user_profile {
+.header_text{
+  display: inline-block;
+}
+
+.user_profile  {
   display: flex;
   justify-content: flex-end;
   flex-direction: row
@@ -69,3 +73,16 @@ footer {
 
 }
 
+.nav_ele {
+  padding: 0 5px 0 5px
+}
+
+.site {
+  display: flex;
+  min-height: 50vh;
+  flex-direction: column;
+}
+
+.site_content {
+  flex: 1
+}

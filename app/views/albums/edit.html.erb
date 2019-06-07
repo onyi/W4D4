@@ -1,6 +1,7 @@
-<h1>Create New Album Record</h1>
+<h1>Edit Album Record</h1>
 
-<form action="<%= albums_url %>" method="POST">
+<form action="<%= album_url %>" method="POST">
+  <input type=hidden name="_method" value="PATCH"> 
   <input type="hidden" name="albums[band_id]" value="<%= @album.band_id %>">
   <label>Album Title: </label>
   <input type="text" name="albums[title]" value="<%= @album.title %>">
@@ -10,12 +11,12 @@
   <br>
   <label>Album Type:   </label>
   <label>Live
-    <input type="radio" name=albums[type] value="0" <%= @album.type == 0 ? "checked" : "" %> >
+    <input type="radio" name=albums[album_type] value="0" <%= !@album.album_type ? "checked" : "" %> >
   </label>
   <label>Studio
-    <input type="radio" name=albums[type] value="1" <%= @album.type == 1 ? "checked" : "" %>>
+    <input type="radio" name=albums[album_type] value="1" <%= @album.album_type ? "checked" : "" %>>
   </label>
   <br>
-  <input type="submit" value="Create">
+  <input type="submit" value="Update">
 </form>
 

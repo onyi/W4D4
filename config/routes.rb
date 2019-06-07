@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   resources :bands do
-    resources :albums, only: :index
+    resources :albums, only: :new 
   end
 
-  resources :albums do
-    resources :tracks, only: :index
+  resources :albums, except: [:index, :new] do
+    resources :tracks, only: :new
   end
 
-  resources :tracks
+  resources :tracks, except: [:index, :new]
 
 end
