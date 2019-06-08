@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  subject(:uesr) do 
+    FactoryBot.build(:user, 
+      email: "hi@hello.world",
+      password: "123456",
+      user_name: "helloworld")
+  end
 
   describe "Validations" do 
     it { should validate_presence_of(:email) }
@@ -9,7 +15,10 @@ RSpec.describe User, type: :model do
   end
 
   it "should fail when password is less than 6 characters long" do 
-    
+    let(:wrong_pw) do
+      build(:wrong_pw) { User.new(user_name: "short_password", password: "12345", email: "unknown@local.host")}
+    end
+    expect(wrong_pw).to be nil 
   end
 
 
@@ -17,7 +26,7 @@ end
 
 RSpec.describe User do
 
-  let(:user1) { User.new(username: "helloworld", password: "password", email: "hello@world.com") }
+  let(:user1) { User.new(user_name: "helloworld", password: "password", email: "hello@world.com") }
 
   describe "::find_by_credentials" do
     it "should able to find a User model when the correct username and password has passed in" do
